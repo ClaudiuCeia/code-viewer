@@ -1,5 +1,5 @@
 {
-  "name": "fill-in",
+  "name": "code-viewer",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,8 +10,25 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.7",
     "@astrojs/check": "^0.9.4",
-    "typescript": "^5.6.3"
+    "@astrojs/react": "^4.1.2",
+    "@astrojs/tailwind": "^5.1.4",
+    "@heroicons/react": "^2.2.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "astro": "^5.1.1",
+    "rdndmb-html5-to-touch": "^8.1.2",
+    "react": "^18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-multi-backend": "^8.1.2",
+    "react-dnd-touch-backend": "^16.0.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-opentype": "^1.1.0",
+    "tree-sitter-cli": "^0.22.6",
+    "tree-sitter-python": "^0.23.6",
+    "typescript": "^5.7.2",
+    "web-tree-sitter": "^0.24.6"
   }
 }
