@@ -1,5 +1,6 @@
 ---
-import { Exercise01 } from "../components/exercise-01";
+import { Ex01 } from "../components/exercises/Ex01";
+import { Ex02 } from "../components/exercises/Ex02";
 ---
 
 <html lang="en">
@@ -18,8 +19,12 @@ import { Exercise01 } from "../components/exercise-01";
     <title>Flashcards - demo</title>
   </head>
   <body>
-    <div class="m-2 md:m-16">
-      <Exercise01 client:only/>
+    <div class="m-2 md:m-16 flex flex-col gap-8">
+      <div>
+        <Ex01 client:only />
+      </div><div class="mt-8">
+        <Ex02 client:only />
+      </div>
     </div>
   </body>
 </html>

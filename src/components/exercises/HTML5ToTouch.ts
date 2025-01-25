@@ -1,8 +1,6 @@
-import { DndProvider, TouchTransition, MouseTransition } from "react-dnd-multi-backend";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { MouseTransition, TouchTransition } from "react-dnd-multi-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
-import { Ex01 } from "./exercises/Ex01";
-import { PreviewAnswer } from "./exercises/PreviewAnswer";
 
 export const HTML5toTouch = {
   backends: [
@@ -20,12 +18,4 @@ export const HTML5toTouch = {
       transition: TouchTransition,
     },
   ],
-};
-export const Exercise01: React.FC = () => {
-  return (
-    <DndProvider options={HTML5toTouch}>
-      <Ex01 />
-      <PreviewAnswer />
-    </DndProvider>
-  );
 };

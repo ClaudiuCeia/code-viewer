@@ -109,6 +109,37 @@ export const PythonCodeViewer = ({
     onClick?.(ev, path, node);
   };
 
+  function getNodeById(tree: Parser.Tree, id: number): Parser.SyntaxNode | null {
+    const findNode = (node: Parser.SyntaxNode): Parser.SyntaxNode | null => {
+      if (node.id === id) {
+        return node;
+      }
+      for (const child of node.children) {
+        const found = findNode(child);
+        if (found) {
+          return found;
+        }
+      }
+      return null;
+    };
+  
+    return findNode(tree.rootNode);
+  }
+  
+  const getPathToNode = (node: Parser.SyntaxNode): ASTPath => {
+    const path: ASTPath = [];
+    let currentNode = node;
+
+    while (currentNode.parent) {
+      const parent = currentNode.parent;
+      const index = parent.children.findIndex((child) => child.id === currentNode.id);
+      path.unshift(index);
+      currentNode = parent;
+    }
+
+    return path;
+  };
+
   return (
     <div
       className={clsx("font-mono whitespace-pre bg-gray-900 rounded-lg inline-block p-4 md:p-20 pl-4 md:pl-14", className)}
@@ -120,7 +151,11 @@ export const PythonCodeViewer = ({
           code={code}
           selectedNodeId={selectedNodeId}
           setSelectedNodeId={setSelectedNodeId}
-          onHover={setHoveredNodeId}
+          onHover={(id: number | null) => {
+            setHoveredNodeId(id);
+            const node = getNodeById(tree!, id!);
+            node && console.log(getPathToNode(node))
+          }}
           hoveredNodeId={hoveredNodeId}
           onClick={handleClick}
           container={container}

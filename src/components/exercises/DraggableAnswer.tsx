@@ -6,9 +6,10 @@ export type AnswerNode = Pick<Parser.SyntaxNode, "id" | "type" | "text">;
 type Props = {
   node: AnswerNode;
   onClick: (node: AnswerNode) => void;
+  className?: string,
 };
 
-export const DraggableAnswer: React.FC<Props> = ({ node, onClick }) => {
+export const DraggableAnswer: React.FC<Props> = ({ node, onClick, className }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: "NODE",
     item: node,
@@ -23,6 +24,7 @@ export const DraggableAnswer: React.FC<Props> = ({ node, onClick }) => {
       onClick={(e) => {
         onClick(node);
       }}
+      className={className}
     >
       <AnswerPill node={node} isDragging={isDragging} />
     </div>
